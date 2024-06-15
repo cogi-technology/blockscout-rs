@@ -11,9 +11,7 @@ services:
     ports:
       - "9432:5432"
   user-ops-indexer:
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    image: ghcr.io/cogi-technology/user-ops-indexer:v1.2.0
     container_name: 'user-ops-indexer'
     restart: always
     depends_on:
@@ -27,6 +25,7 @@ services:
       USER_OPS_INDEXER__DATABASE__CONNECT__URL: postgres://postgres:@database:5432/blockscout
       USER_OPS_INDEXER__DATABASE__CREATE_DATABASE: true
       USER_OPS_INDEXER__DATABASE__RUN_MIGRATIONS: true
+      ENTRYPOINT: 0xbdfa286897f86cd02b7916bc1e9aadc1f09da842
     env_file:
       ## optional: if provided, would overwrite values from configuration file
       - ./user-ops-indexer-server/config/base.env

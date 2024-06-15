@@ -94,7 +94,7 @@ impl Default for IndexerSettings {
     fn default() -> Self {
         dotenv().ok();
         Self {
-            rpc_url: std::env::var("DEFAULT_RPC_URL").expect("DEFAULT_RPC_URL").to_string(),
+            rpc_url: std::env::var("DEFAULT_RPC_URL").expect("DEFAULT_RPC_URL Error").to_string(),
             concurrency: 10,
             entrypoints: EntrypointsSettings {
                 v06: true,
