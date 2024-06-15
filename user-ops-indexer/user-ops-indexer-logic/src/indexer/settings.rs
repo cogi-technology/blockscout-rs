@@ -1,6 +1,7 @@
 use serde::Deserialize;
 use serde_with::serde_as;
 use std::time;
+use dotenv::dotenv;
 
 #[serde_as]
 #[derive(Debug, Clone, Deserialize, PartialEq, Eq)]
@@ -91,8 +92,9 @@ fn default_restart_delay() -> time::Duration {
 
 impl Default for IndexerSettings {
     fn default() -> Self {
+        dotenv().ok();
         Self {
-            rpc_url: "ws://127.0.0.1:8546".to_string(),
+            rpc_url: std::env::var("DEFAULT_RPC_URL").expect("DEFAULT_RPC_URL").to_string(),
             concurrency: 10,
             entrypoints: EntrypointsSettings {
                 v06: true,

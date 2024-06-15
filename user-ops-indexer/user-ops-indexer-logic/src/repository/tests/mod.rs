@@ -7,6 +7,7 @@ use std::sync::Arc;
 use tokio::sync::Mutex;
 
 static SHARED_DB_MUTEX: Mutex<Option<String>> = Mutex::const_new(None);
+
 pub async fn get_shared_db() -> Arc<DatabaseConnection> {
     let mut initialized = SHARED_DB_MUTEX.lock().await;
     match initialized.clone() {

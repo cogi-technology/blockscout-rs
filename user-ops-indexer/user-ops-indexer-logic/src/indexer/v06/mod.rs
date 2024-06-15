@@ -17,14 +17,15 @@ use ethers::prelude::{
 };
 use lazy_static::lazy_static;
 use std::ops::Div;
+use dotenv::dotenv;
 
 lazy_static! {
-    static ref ENTRYPOINT: ethers::types::Address = "0x5FF137D4b0FDCD49DcA30c7CF57E578a026d2789"
+    static ref ENTRYPOINT: ethers::types::Address = {dotenv().ok(); std::env::var("ENTRYPOINT").expect("Error get Entrypoint address")}
         .parse()
         .unwrap();
 }
 
-abigen!(IEntrypointV06, "./src/indexer/v06/abi.json");
+abigen!(IEntrypointV06, "./src/indexer/v06/abi-zion.json");
 
 pub struct IndexerV06;
 
