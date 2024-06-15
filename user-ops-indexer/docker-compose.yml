@@ -25,7 +25,7 @@ services:
       USER_OPS_INDEXER__DATABASE__CONNECT__URL: postgres://postgres:@database:5432/blockscout
       USER_OPS_INDEXER__DATABASE__CREATE_DATABASE: true
       USER_OPS_INDEXER__DATABASE__RUN_MIGRATIONS: true
-      ENTRYPOINT: 0xbdfa286897f86cd02b7916bc1e9aadc1f09da842
+      USER_OPS_INDEXER__ENTRYPOINT: 0xbdfa286897f86cd02b7916bc1e9aadc1f09da842
     env_file:
       ## optional: if provided, would overwrite values from configuration file
       - ./user-ops-indexer-server/config/base.env

@@ -384,14 +384,6 @@ mod tests {
     use dotenv::dotenv;
 
     #[tokio::test]
-    async fn handle() {
-        dotenv().ok();
-        let env = std::env::var("DATABASE_URL").unwrap();
-        println!("{env}");
-    }
-
-
-    #[tokio::test]
     async fn handle_tx_v06_ok() {
         dotenv().ok();
 

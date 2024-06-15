@@ -20,7 +20,10 @@ use std::ops::Div;
 use dotenv::dotenv;
 
 lazy_static! {
-    static ref ENTRYPOINT: ethers::types::Address = {dotenv().ok(); std::env::var("ENTRYPOINT").expect("Error get Entrypoint address")}
+    static ref ENTRYPOINT: ethers::types::Address = {
+        dotenv().ok(); 
+        std::env::var("USER_OPS_INDEXER__ENTRYPOINT").expect("Error get Entrypoint address")
+    }
         .parse()
         .unwrap();
 }
